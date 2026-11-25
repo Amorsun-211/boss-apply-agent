@@ -1,0 +1,30 @@
+# BOSS 海投 Agent 配置（使用者按需修改）
+resume_slot: resume/RESUME_SLOT.md   # 简历登记文件，Agent 启动先读
+site: https://www.zhipin.com
+browser: own_desktop_only            # 只用本人桌面浏览器，不可用则停，不顶替
+
+lists:                               # 投递列表与顺序
+  - 推荐
+  - <目标岗位关键词，例如：直播运营>
+
+mode: unlimited                      # limited=每轮暂停等查看 | unlimited=持续投到停止条件
+per_list_batch: 10                   # 每个列表每批约投个数
+salary_filter: false                 # 默认不筛薪资
+
+skip:                                # 跳过规则
+  - already_contacted                # 已沟通过
+  - pure_on_camera_host              # 纯出镜主播
+  - pure_sales_or_support            # 纯销售/客服
+  - senior_manager_mismatch          # 年限/团队规模明显高于简历的经理岗
+  - hard_language_requirement        # 硬性语言要求
+  - missing_hard_experience          # 硬门槛为简历没有的经验
+
+message:
+  chars: 300-450
+  paragraphs: 3                      # 三段分段发送，不塌成一段
+  numbers_per_message: 1-2           # 只用最相关的数字，须带口径
+  no_question_ending: true
+  tone: serious_professional
+
+inbox: hands_off                     # 不打开消息栏，不回复招聘者
+stop_on: [platform_limit, captcha, risk_control, logged_out, send_failure, user_stop]
